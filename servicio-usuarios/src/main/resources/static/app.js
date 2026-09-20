@@ -1,0 +1,7 @@
+const $=s=>document.querySelector(s);const usersEl=$('#users');
+function initials(name){return name.split(' ').filter(Boolean).slice(0,2).map(x=>x[0]).join('').toUpperCase()}
+async function loadUsers(){try{const r=await fetch('/usuarios');const data=await r.json();$('#total').textContent=data.length;usersEl.innerHTML=data.length?data.map(u=>`<div class="user-row"><div class="user-main"><div class="avatar">${initials(u.nombre)}</div><div><b>${escapeHtml(u.nombre)}</b><span>${escapeHtml(u.email)}</span></div></div><div class="user-id">ID #${u.id}</div></div>`).join(''):'<div class="empty">No hay usuarios registrados todavía.</div>'}catch(e){usersEl.innerHTML='<div class="empty">No fue posible consultar la API.</div>'}}
+function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+$('#refresh').onclick=loadUsers;
+$('#userForm').onsubmit=async e=>{e.preventDefault();const msg=$('#formMessage');msg.textContent='Guardando…';try{const r=await fetch('/usuarios',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:$('#nombre').value.trim(),email:$('#email').value.trim()})});const d=await r.json();if(!r.ok)throw new Error(d.error||'No se pudo crear');msg.textContent='✓ Usuario creado correctamente';e.target.reset();await loadUsers()}catch(err){msg.textContent='⚠ '+err.message}}
+loadUsers();

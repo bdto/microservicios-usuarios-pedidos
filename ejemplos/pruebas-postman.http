@@ -1,0 +1,50 @@
+### ============================
+### SERVICIO DE USUARIOS : 8081
+### ============================
+
+### Listar usuarios
+GET http://localhost:8081/usuarios
+
+### Consultar usuario 1
+GET http://localhost:8081/usuarios/1
+
+### Crear usuario
+POST http://localhost:8081/usuarios
+Content-Type: application/json
+
+{
+  "nombre": "Carlos López",
+  "email": "carlos@correo.com"
+}
+
+### ============================
+### SERVICIO DE PEDIDOS : 8082
+### ============================
+
+### Listar pedidos
+GET http://localhost:8082/pedidos
+
+### Crear pedido válido
+# Este POST obliga a servicio-pedidos a consultar servicio-usuarios.
+POST http://localhost:8082/pedidos
+Content-Type: application/json
+
+{
+  "usuarioId": 1,
+  "producto": "Teclado mecánico",
+  "cantidad": 2
+}
+
+### Probar usuario inexistente
+# Debe devolver 404.
+POST http://localhost:8082/pedidos
+Content-Type: application/json
+
+{
+  "usuarioId": 999,
+  "producto": "Mouse",
+  "cantidad": 1
+}
+
+### Consultar pedido 1
+GET http://localhost:8082/pedidos/1

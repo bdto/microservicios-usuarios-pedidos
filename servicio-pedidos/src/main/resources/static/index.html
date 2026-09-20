@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microservicio de Pedidos</title><link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <main class="shell">
+    <header class="topbar"><div class="brand"><div class="brand-mark">P</div><div><strong>MICROSERVICIOS</strong><span>Servicio de Pedidos</span></div></div><div class="status"><span class="dot"></span> API en línea · Puerto 8082</div></header>
+    <section class="hero"><div><span class="eyebrow">COMUNICACIÓN ENTRE SERVICIOS</span><h1>Panel de <em>Pedidos</em></h1><p>Registra pedidos y observa cómo este microservicio valida al usuario consumiendo la API REST del Servicio de Usuarios.</p></div><div class="hero-badge"><b>REST →</b><span>Usuarios :8081</span></div></section>
+    <section class="grid">
+      <article class="card form-card"><div class="card-head"><div><span class="kicker">NUEVO PEDIDO</span><h2>Crear pedido</h2></div><div class="icon">↗</div></div>
+        <form id="orderForm"><label>ID del usuario<input id="usuarioId" type="number" min="1" required placeholder="Ej. 1"></label><label>Producto<input id="producto" required maxlength="100" placeholder="Ej. Teclado mecánico"></label><label>Cantidad<input id="cantidad" type="number" min="1" required value="1"></label><button type="submit">Registrar pedido <span>→</span></button></form><div id="formMessage" class="message"></div>
+      </article>
+      <article class="card data-card"><div class="card-head"><div><span class="kicker">TRAZA DE LA ARQUITECTURA</span><h2>Pedidos registrados</h2></div><button class="ghost" id="refresh">Actualizar ↻</button></div>
+        <div class="flow"><div class="node"><b>Pedidos</b><span>:8082</span></div><div class="connector">↔</div><div class="node"><b>Usuarios</b><span>:8081</span></div></div>
+        <div class="stats"><div><strong id="total">—</strong><span>Total</span></div><div><strong>REST</strong><span>Comunicación</span></div><div><strong>H2</strong><span>Persistencia</span></div></div>
+        <div id="orders" class="list"><div class="empty">Cargando pedidos…</div></div>
+      </article>
+    </section>
+    <footer><span>Spring Boot · REST Client · JPA · H2</span><span>Microservicio independiente</span><span>Comunicación → Servicio de Usuarios</span></footer>
+  </main><script src="/app.js"></script>
+</body>
+</html>

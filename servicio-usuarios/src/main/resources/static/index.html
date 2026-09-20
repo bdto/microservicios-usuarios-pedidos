@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microservicio de Usuarios</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand"><div class="brand-mark">U</div><div><strong>MICROSERVICIOS</strong><span>Servicio de Usuarios</span></div></div>
+      <div class="status"><span class="dot"></span> API en línea · Puerto 8081</div>
+    </header>
+    <section class="hero">
+      <div><span class="eyebrow">ARQUITECTURA ORIENTADA A MICROSERVICIOS</span><h1>Centro de <em>Usuarios</em></h1><p>Administra identidades y comprueba el primer nodo de nuestra arquitectura distribuida.</p></div>
+      <div class="hero-badge"><b>REST</b><span>/usuarios</span></div>
+    </section>
+    <section class="grid">
+      <article class="card form-card">
+        <div class="card-head"><div><span class="kicker">NUEVO REGISTRO</span><h2>Crear usuario</h2></div><div class="icon">+</div></div>
+        <form id="userForm">
+          <label>Nombre<input id="nombre" required maxlength="80" placeholder="Ej. Laura Gómez"></label>
+          <label>Correo electrónico<input id="email" type="email" required maxlength="120" placeholder="laura@correo.com"></label>
+          <button type="submit">Crear usuario <span>→</span></button>
+        </form>
+        <div id="formMessage" class="message"></div>
+      </article>
+      <article class="card data-card">
+        <div class="card-head"><div><span class="kicker">DATOS EN MEMORIA</span><h2>Usuarios registrados</h2></div><button class="ghost" id="refresh">Actualizar ↻</button></div>
+        <div id="stats" class="stats"><div><strong id="total">—</strong><span>Total</span></div><div><strong>H2</strong><span>Base de datos</span></div><div><strong>8081</strong><span>Puerto</span></div></div>
+        <div id="users" class="list"><div class="empty">Cargando usuarios…</div></div>
+      </article>
+    </section>
+    <footer><span>Spring Boot · JPA · H2</span><span>Microservicio independiente</span><a href="/h2-console" target="_blank">Abrir H2 Console ↗</a></footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

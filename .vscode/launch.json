@@ -1,0 +1,28 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Servicio Usuarios",
+      "request": "launch",
+      "mainClass": "com.example.usuarios.ServicioUsuariosApplication",
+      "projectName": "servicio-usuarios"
+    },
+    {
+      "type": "java",
+      "name": "Servicio Pedidos",
+      "request": "launch",
+      "mainClass": "com.example.pedidos.ServicioPedidosApplication",
+      "projectName": "servicio-pedidos"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Ejecutar microservicios",
+      "configurations": [
+        "Servicio Usuarios",
+        "Servicio Pedidos"
+      ]
+    }
+  ]
+}
